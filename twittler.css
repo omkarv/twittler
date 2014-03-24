@@ -1,0 +1,28 @@
+div {
+	font-family: Didot,"Didot LT STD","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 20px;
+	min-height: 30px;
+}
+
+button {
+	font-family: Didot,"Didot LT STD","Helvetica Neue",Helvetica,Arial,sans-serif;
+	background-color: white;
+	font-size: 20px;
+}
+
+button:hover {
+	background-color: #33CCFF;
+	
+}
+
+div:hover {
+	font-family: Didot,"Didot LT STD","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 25px;
+	min-height: 30px;
+	font-weight: bold;
+}
+
+button:active {
+	background-color: #33FF66;
+	
+}
