@@ -18,19 +18,21 @@
           //display maximum no of tweets
           if (arguments.length > 0)
           {
+            $('div').remove();
             var index = streams.users[username].length - 1;
             while(index >= 0){
               var tweet = streams.users[username][index];
-              var $tweet = $('<div ' + 'id= "' + tweet.user + '">' + '</div>');
+              var $tweet = $('<div ' + 'id= "' + tweet.user + '" class="tweet">' + '</div>');
               $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at.toUTCString());
               $tweet.appendTo($body);
               index -= 1;
             } 
           } else {
+            $('div').remove();
             var index = streams.home.length - 1;
             while(index >= 0){
               var tweet = streams.home[index];
-              var $tweet = $('<div ' + "id= '" + tweet.user + "'>" + '</div>');
+              var $tweet = $('<div ' + 'id= "' + tweet.user + '" class="tweet">' + '</div>');
               $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at.toUTCString());
               $tweet.appendTo($body);
               index -= 1;
@@ -38,22 +40,19 @@
           }
 
         };
+
         refreshTweets();
-        var $tweets = $('div');
-        $('.home').on('click', function() {
-          $tweets.remove();
-          $tweets = $('div');
-          //console.log($('div'))
+        
+       $('.home').on('click', function() {
           refreshTweets();
         });
 
-        $tweets.on('click', function() {
-          $tweets.remove();
-          $tweets = $('div');
+        var showUserDisplayOnClick = function() {$('.tweet').on("click", function() {
           refreshTweets(this.id);
-          //console.log($('div'));
-          console.log("Click");
         });
+        };
+
+        setInterval(showUserDisplayOnClick, 1000);
 
       });
 
