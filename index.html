@@ -14,16 +14,30 @@
         $body.html('<button type="button" class="refresh"><h3>Refresh<h3></button><br><br><br>');
         
         
-        var refreshTweets = function() {
-          var index = streams.home.length - 1;
+        var refreshTweets = function(username) {
+          
           //display maximum no of tweets
-          while(index >= 0){
-            var tweet = streams.home[index];
-            var $tweet = $('<div></div>');
-            $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at.toUTCString());
-            $tweet.appendTo($body);
-            index -= 1;
+          if (arguments.length > 0)
+          {
+            var index = streams.users[username].length - 1;
+            while(index >= 0){
+              var tweet = streams.users[username][index];
+              var $tweet = $('<div></div>');
+              $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at.toUTCString());
+              $tweet.appendTo($body);
+              index -= 1;
+            } 
+          } else {
+            var index = streams.home.length - 1;
+            while(index >= 0){
+              var tweet = streams.home[index];
+              var $tweet = $('<div></div>');
+              $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at.toUTCString());
+              $tweet.appendTo($body);
+              index -= 1;
+            }
           }
+
         };
         refreshTweets();
         $('.refresh').on('click', function() {
