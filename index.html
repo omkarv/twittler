@@ -38,7 +38,6 @@
               index -= 1;
             }
           }
-
         };
 
         refreshTweets();
@@ -47,12 +46,9 @@
           refreshTweets();
         });
 
-        var showUserDisplayOnClick = function() {$('.tweet').on("click", function() {
+        $('body').on('click', '.tweet', function() {
           refreshTweets(this.id);
         });
-        };
-
-        setInterval(showUserDisplayOnClick, 1000);
 
       });
 
