@@ -15,16 +15,13 @@
         
         var refreshTweets = function(username) {
           
-          //display maximum no of tweets
           if (arguments.length > 0)
           {
             $('div').remove();
             var index = streams.users[username].length - 1;
             while(index >= 0){
               var tweet = streams.users[username][index];
-              var $tweet = $('<div ' + 'id= "' + tweet.user + '" class="tweet">' + '</div>');
-              $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at.toUTCString());
-              $tweet.appendTo($body);
+              printTweet(tweet);
               index -= 1;
             } 
           } else {
@@ -32,24 +29,20 @@
             var index = streams.home.length - 1;
             while(index >= 0){
               var tweet = streams.home[index];
-              var $line1 = $('<div ' + 'class="message" >');
-              var $user = $('<div ' + 'id= "' + tweet.user + '" class="username "' + '</div>');
-              var $time = $('<div ' + 'class="time "' + '</div>');
-              var $tweet = $('<div ' + '" class="tweet">' + '</div>');
-              var $line2 = $('</div>');
-
-              $tweet.text(tweet.message);//'@' + tweet.user + ': ' + + ' ' //+ tweet.created_at.toUTCString());
-              $user.text('@' + tweet.user);
-              $time.text(tweet.created_at.toUTCString());
-              $line1.appendTo($body);
-              $time.appendTo($body);
-              $user.appendTo($body);
-              $tweet.appendTo($body);
-              $line2.appendTo($body);
+              printTweet(tweet);
               index -= 1;
             }
           }
         };
+
+        var printTweet = function(inputTweet) {
+           var timeSinceTweet =  "" + (new Date()).getUTCMinutes() - inputTweet.created_at.getUTCMinutes() + " minutes ago";
+              var $tweet = $('<div ' + 'class="message" >' 
+                + '<div ' + 'class="time">' + timeSinceTweet + '</div>'
+                + '<div ' + 'id="' + inputTweet.user + '" class="username">' + '@' + inputTweet.user + '</div>' 
+                + '<div ' + '"class="tweet">' + inputTweet.message  + '</div>' +  '</div>');
+              $tweet.appendTo($body);
+        }
 
         refreshTweets();
         
