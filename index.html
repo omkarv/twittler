@@ -11,7 +11,7 @@
     <script>
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('<button type="button" class="home"><h3>Home<h3></button><br><br><br>');
+        $body.html('<button type="button" class="home"><h2>Home<h2></button><h1>Twittler</h1><br>');
         
         var refreshTweets = function(username) {
           
@@ -32,9 +32,20 @@
             var index = streams.home.length - 1;
             while(index >= 0){
               var tweet = streams.home[index];
-              var $tweet = $('<div ' + 'id= "' + tweet.user + '" class="tweet">' + '</div>');
-              $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at.toUTCString());
+              var $line1 = $('<div ' + 'class="message" >');
+              var $user = $('<div ' + 'id= "' + tweet.user + '" class="username "' + '</div>');
+              var $time = $('<div ' + 'class="time "' + '</div>');
+              var $tweet = $('<div ' + '" class="tweet">' + '</div>');
+              var $line2 = $('</div>');
+
+              $tweet.text(tweet.message);//'@' + tweet.user + ': ' + + ' ' //+ tweet.created_at.toUTCString());
+              $user.text('@' + tweet.user);
+              $time.text(tweet.created_at.toUTCString());
+              $line1.appendTo($body);
+              $time.appendTo($body);
+              $user.appendTo($body);
               $tweet.appendTo($body);
+              $line2.appendTo($body);
               index -= 1;
             }
           }
@@ -46,7 +57,7 @@
           refreshTweets();
         });
 
-        $('body').on('click', '.tweet', function() {
+        $('body').on('click', '.username', function() {
           refreshTweets(this.id);
         });
 
