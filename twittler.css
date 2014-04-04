@@ -1,26 +1,21 @@
-h1 {
+body {
+	background-image: url('handmadepaper.png'); 
 	font-family: Didot,"Didot LT STD","Helvetica Neue",Helvetica,Arial,sans-serif;
-	position: relative;
-	top: 0;
-	right: 0;
-	color: white;
-	background: -webkit-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
-	border-radius: 10px;
+}
+
+h1 {
 	padding: 5px;
 	text-align: center;
 }
 
 div {
-	font-family: Didot,"Didot LT STD","Helvetica Neue",Helvetica,Arial,sans-serif;
-	margin-left: 15px;
-	margin-right: 20px;
+	margin: 0 20px 0 20px;
 }
 
-button {
-	font-family: Didot,"Didot LT STD","Helvetica Neue",Helvetica,Arial,sans-serif;
-	color: white;
-	background: -webkit-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+h1, button {
 	border-radius: 10px;
+	background: -webkit-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+    color: white;
 }
 
 .username {
@@ -33,6 +28,7 @@ button {
 	float: right;
 	font-style: italic;
 	color: gray;
+	padding-top: 5px;
 }
 
 .message {
@@ -43,6 +39,16 @@ button {
     background-color: white; 
 }
 
-body {
-	background-image: url('handmadepaper.png') 
+
+.message:nth-child(odd) {
+	background: -webkit-linear-gradient(top,lightcyan 0%,white 100%);
+}
+
+.message:hover, .time:hover {
+	background: -webkit-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
+	color: white;
+}
+
+.message:active {
+    background-color: white; 
 }
