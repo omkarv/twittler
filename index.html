@@ -55,14 +55,19 @@
         $('body').on('click', '.username', function() {
           refreshTweets(this.id);
         });
-
+        var visitor;
         var $input = $('input')
         $input.on('keydown', function(event) {
           if (event.which === 13)
           {
-            visitor = "Gary";
-            streams.users[visitor] = [];
-            writeTweet($input.val());
+            if (!visitor) {
+                visitor = prompt("Please enter your name");
+            } 
+            if( !streams.users[visitor])
+            {
+              streams.users[visitor] = [];
+            } 
+            writeTweet($input.val(), visitor);
             $input.val('');
             refreshTweets();
           }
