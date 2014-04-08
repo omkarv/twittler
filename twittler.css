@@ -8,7 +8,7 @@ h1 {
 	text-align: center;
 }
 
-div {
+div, input {
 	margin: 0 20px 0 20px;
 }
 
@@ -16,6 +16,21 @@ h1, .home {
 	border-radius: 10px;
 	background: -webkit-linear-gradient(top,#25A6E1 0%,#188BC0 100%);
     color: white;
+    transition: all 0.2s ease-in-out;
+}
+
+.home, input{
+	box-shadow: 2px 2px 0 0 #188BC0;
+	border-color: #188BC0;
+	font-family: Didot;
+}
+
+input {
+	font-size: 20px;
+	text-align: center;
+	width: 400px;
+	margin: auto;
+	display: block;
 }
 
 .username {
@@ -30,12 +45,14 @@ h1, .home {
 	padding-top: 5px;
 }
 
-.message {
+.message, input {
 	border: 2px solid #188BC0;
 	border-radius: 10px;
 	padding: 5px 0 5px 0;
 	margin-bottom: 5px;
     background: -webkit-linear-gradient(top,lightcyan 0%,white 100%);
+    transition: all 0.1s ease-in-out;
+	box-shadow: -2px -2px 0 0 #188BC0;
 }
 
 .message:hover>.time, .message:hover {

@@ -6,17 +6,20 @@
     <script src="data_generator.js"></script>
   </head>
   <body>
-    
+    <button type="button" class="home"><h2>Home<h2></button>
+    <h1>Twittler</h1><br>
+    <div><input type="text" placeholder="Twit here, press the enter key to submit"  maxlength="140" autofocus></input></div>
+    <br>
+
     <script>
       $(document).ready(function(){
         var $body = $('body');
-        $body.html('<button type="button" class="home"><h2>Home<h2></button><h1>Twittler</h1><br>');
         
         var refreshTweets = function(username) {
           
           if (arguments.length > 0)
           {
-            $('div').remove();
+            $('.message').remove();
             var index = streams.users[username].length - 1;
             while(index >= 0){
               var tweet = streams.users[username][index];
@@ -24,7 +27,7 @@
               index -= 1;
             } 
           } else {
-            $('div').remove();
+            $('.message').remove();
             var index = streams.home.length - 1;
             while(index >= 0){
               var tweet = streams.home[index];
@@ -51,6 +54,18 @@
 
         $('body').on('click', '.username', function() {
           refreshTweets(this.id);
+        });
+
+        var $input = $('input')
+        $input.on('keydown', function(event) {
+          if (event.which === 13)
+          {
+            visitor = "Gary";
+            streams.users[visitor] = [];
+            writeTweet($input.val());
+            $input.val('');
+            refreshTweets();
+          }
         });
 
       });
